@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>carousel</title>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<div id="carousel" data-setting = '{"width" : 1000}'>
+		<div id="selBtn">
+		</div>
+		<div class="btn prev_btn"></div>
+		<ul class="poster-list">
+			<li class="poster-item"><a href="#"><img src="img/1.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/2.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/3.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/4.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/5.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/2.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/3.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/4.jpg" alt=""/></a></li>
+			<li class="poster-item"><a href="#"><img src="img/5.jpg" alt=""/></a></li>
+		</ul>
+		<div class="btn next_btn"></div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		var carousel = new Carousel.init($('#carousel'));
+	</script>
+</body>
+</html>
