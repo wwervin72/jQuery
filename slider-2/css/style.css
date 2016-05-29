@@ -1,0 +1,49 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.slider{
+	position: relative;
+	overflow: hidden;
+}
+.slider ul{
+	list-style: none;
+	position: absolute;
+}
+.slider ul li{
+	float: left;
+}
+.slider .mask{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.slider .mask .sliderBtn{
+	position: absolute;
+	border-radius: 50%;
+	background-color: #fff;
+	cursor: pointer;
+	background: radial-gradient(white 20%, transparent 50%);
+}
+.slider .prev, .slider .next{
+	position: absolute;
+	width: 55px; 
+	height: 100%;
+	background-color: rgba(0, 0, 0, .2);
+	cursor: pointer;
+	display: none;
+}
+.slider .prev{
+	left: 0;
+}
+.slider .next{
+	right: 0;
+}
+.slider .prev img, .slider .next img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -22.5px;
+	margin-left: -22.5px;
+}
