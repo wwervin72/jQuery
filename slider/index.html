@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider</title>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<div class="slider">
+		<ul>
+			<li><a href="javascript:;"><img src="img/1.jpg"></a></li>
+			<li><a href="javascript:;"><img src="img/2.jpg"></a></li>
+			<li><a href="javascript:;"><img src="img/3.jpg"></a></li>
+			<li><a href="javascript:;"><img src="img/4.jpg"></a></li>
+			<li><a href="javascript:;"><img src="img/5.jpg"></a></li>
+			<li><a href="javascript:;"><img src="img/6.jpg"></a></li>
+		</ul>
+		<!-- 按钮遮罩层 -->
+		<div class="btnBox">
+		</div>
+	    <!-- next/prev按钮 -->
+	    <div class="prev">
+	    	<img src="img/btn_l.png"/>
+	    </div>
+	    <div class="next">
+	    	<img src="img/btn_r.png"/>
+	    </div>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/slider.js"></script>
+	<script>
+		$('.slider').slider();
+	</script>
+</body>
+</html>
