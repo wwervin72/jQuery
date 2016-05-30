@@ -11,7 +11,18 @@
 		}
 		setting = $.extend(true, {}, defaultSetting, setting);
 		return this.each(function (i, item) {
+			//重写setInterval函数，让其可以传参
+			var _setInterval = window.setInterval;
+			window.setInterval = function (callback, timer, param) {
+				var args = Array.prototype.slice.call(arguments,2); 
+				var _fn = function () {
+					callback.apply(null, args);
+				}
+				_setInterval(_fn, timer);
+			}
+
 			var _this = $(this),
+			ulBox = $('.ul-box', this),
 			ul = $('ul', this),
 			li = $('li', ul),
 			img = $('img', li),
@@ -19,11 +30,12 @@
 			mask = $('.mask', this),
 			index = 0,
 			flag = true,
-			aniFn = setting.direction ? aniLeft : aniRight,
-			removeLi,
 			timer,
 			gap;
 			_this.width(setting.width).height(setting.height);
+			ulBox.width(setting.width * 3 * len).height(setting.height).css({
+				marginLeft: -setting.width * len
+			});
 			ul.width(setting.width * len).height(setting.height);
 			img.width(setting.width).height(setting.height);
 			mask.height(setting.btnSize + 2 * setting.btnSpace);
@@ -32,6 +44,10 @@
 				str += '<div class="sliderBtn"></div>';
 			}
 			mask.html(str);
+			var ulFir = ul.clone(true);
+			var ulSec = ul.clone(true);
+			ulBox.append(ulFir);
+			ulBox.append(ulSec);
 			$('.sliderBtn', '.mask').each(function (i, item) {
 				$(item).css({
 					width : setting.btnSize,
@@ -40,14 +56,6 @@
 					left : parseInt(setting.width - (setting.btnSize + setting.btnSpace *2) *len, 10) /2 + setting.btnSize * i + setting.btnSpace * i * 2 + setting.btnSpace
 				})
 				$(item).mouseenter(function () {
-					
-					i = $(this).index();
-					// var fn = index > i ? aniRight : aniLeft;
-					gap = Math.abs(index - i);
-					ml = li.eq(0).css('margin-left');
-					if(index > i){
-						li.css('margin-left', ml + setting.width * gap * )
-					}
 				})
 			});
 			btnAni(0);
@@ -57,47 +65,50 @@
 				$('.sliderBtn').eq(index).css('background', 'radial-gradient(white 10%, transparent 30%, white 70%)');
 			}
 			//动画
-			function aniLeft () {
-				index++;
-				index = index % len;
-				li = $('li', ul);
-				if(flag){
-					flag = false;
-					btnAni(index);
-					li.eq(0).animate({marginLeft : -setting.width}, setting.speed, function () {
-						flag = true;
-						removeLi = li.eq(0).remove();
-						removeLi.removeAttr('style');
-						ul.append(removeLi);
-					})
-				}
-			}
-			function aniRight () {
-				index--;
-				index = index === -1 ? (len - 1) : index;
-				li = $('li', ul);
-				if(flag){
-					flag = false;
-					btnAni(index);
-					removeLi = li.eq(len - 1).remove();
-					removeLi.css('marginLeft', -setting.width);
-					ul.prepend(removeLi);
-					li = $('li', ul);
-					li.eq(0).animate({marginLeft : 0}, setting.speed, function () {
-						flag = true;
-					})
+			function ani (direction, num) {
+				//默认1向左运动，0向右运动
+				if(direction){
+					index += num;
+					index = index % len;
+					var ulfir = $('ul', ulBox).eq(0);
+					var left = parseInt(ulfir.css('margin-left'), 10);
+					left = left - num * setting.width;
+					ulfir.animate({
+						marginLeft: left
+					}, setting.speed, function () {
+						if(left <= -len * setting.width){
+							ulfir = ulfir.remove();
+							ulfir.css('margin-left', 0);
+							ulBox.append(ulfir);
+						}
+					});
+				}else{
+					index -= num;
+					index = index <= -1 ? len - 1 : index;
+					var ulfir = $('ul', ulBox).eq(0);
+					var left = parseInt(ulfir.css('margin-left'), 10);
+					left = left + num * setting.width;
+					ulfir.animate({
+						marginLeft: left
+					}, setting.speed, function () {
+						if(left >= 0){
+							ulfir = $('ul', ulBox).eq(2).remove();
+							ulfir.css('margin-left', - len * setting.width);
+							ulBox.prepend(ulfir);
+						}
+					});
 				}
 			}
 			//定时器
-			timer = setInterval(aniFn, setting.during);
+			timer = setInterval(ani, setting.during, 0, 1);
 			_this.hover(function () {
 				$('.prev', this).css('display', 'block');
 				$('.next', this).css('display', 'block');
-				clearInterval(timer);
+				// clearInterval(timer);
 			}, function () {
 				$('.prev', this).css('display', 'none');
 				$('.next', this).css('display', 'none');
-				timer = setInterval(aniFn, setting.during);
+				timer = setInterval(ani, setting.during, 1, 1);
 			})
 			$('.next').click(function () {
 				flag && aniLeft();

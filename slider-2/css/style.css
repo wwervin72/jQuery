@@ -9,7 +9,7 @@
 }
 .slider ul{
 	list-style: none;
-	position: absolute;
+	float: left;
 }
 .slider ul li{
 	float: left;
@@ -28,10 +28,11 @@
 }
 .slider .prev, .slider .next{
 	position: absolute;
-	width: 55px; 
+	width: 45px; 
 	height: 100%;
 	background-color: rgba(0, 0, 0, .2);
 	cursor: pointer;
+	top: 0;
 	display: none;
 }
 .slider .prev{
