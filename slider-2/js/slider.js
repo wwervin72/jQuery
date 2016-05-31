@@ -5,7 +5,7 @@
 			height : 270,
 			during : 3000,
 			speed : 500,
-			btnSize : 20,
+			btnSize : 30,
 			btnSpace : 10,
 			direction : 1
 		}
@@ -18,7 +18,7 @@
 				var _fn = function () {
 					callback.apply(null, args);
 				}
-				_setInterval(_fn, timer);
+				return _setInterval(_fn, timer);
 			}
 
 			var _this = $(this),
@@ -30,8 +30,8 @@
 			mask = $('.mask', this),
 			index = 0,
 			flag = true,
-			timer,
-			gap;
+			gap,
+			timer;
 			_this.width(setting.width).height(setting.height);
 			ulBox.width(setting.width * 3 * len).height(setting.height).css({
 				marginLeft: -setting.width * len
@@ -46,16 +46,19 @@
 			mask.html(str);
 			var ulFir = ul.clone(true);
 			var ulSec = ul.clone(true);
+			var sliderBtn = $('.sliderBtn', '.mask');
 			ulBox.append(ulFir);
 			ulBox.append(ulSec);
-			$('.sliderBtn', '.mask').each(function (i, item) {
+			sliderBtn.each(function (i, item) {
 				$(item).css({
 					width : setting.btnSize,
 					height : setting.btnSize,
 					top : setting.btnSpace,
 					left : parseInt(setting.width - (setting.btnSize + setting.btnSpace *2) *len, 10) /2 + setting.btnSize * i + setting.btnSpace * i * 2 + setting.btnSpace
-				})
+				});
 				$(item).mouseenter(function () {
+					gap = Math.abs(i - index);
+					i > index ? (flag && ani(1, gap)) : (flag && ani(0, gap));
 				})
 			});
 			btnAni(0);
@@ -66,57 +69,61 @@
 			}
 			//动画
 			function ani (direction, num) {
-				//默认1向左运动，0向右运动
-				if(direction){
-					index += num;
-					index = index % len;
+				if(flag){
+					//默认1向左运动，0向右运动
+					flag = false;
 					var ulfir = $('ul', ulBox).eq(0);
 					var left = parseInt(ulfir.css('margin-left'), 10);
-					left = left - num * setting.width;
-					ulfir.animate({
-						marginLeft: left
-					}, setting.speed, function () {
-						if(left <= -len * setting.width){
-							ulfir = ulfir.remove();
-							ulfir.css('margin-left', 0);
-							ulBox.append(ulfir);
-						}
-					});
-				}else{
-					index -= num;
-					index = index <= -1 ? len - 1 : index;
-					var ulfir = $('ul', ulBox).eq(0);
-					var left = parseInt(ulfir.css('margin-left'), 10);
-					left = left + num * setting.width;
-					ulfir.animate({
-						marginLeft: left
-					}, setting.speed, function () {
-						if(left >= 0){
-							ulfir = $('ul', ulBox).eq(2).remove();
-							ulfir.css('margin-left', - len * setting.width);
-							ulBox.prepend(ulfir);
-						}
-					});
+					if(direction){
+						index += num;
+						index = index % len;
+						left = left - num * setting.width;
+						ulfir.animate({
+							marginLeft: left
+						}, setting.speed, function () {
+							if(left <= -len * setting.width){
+								ulfir = ulfir.remove();
+								ulfir.css('margin-left', 0);
+								ulBox.append(ulfir);
+							}
+							flag = true;
+						});
+					}else{
+						index -= num;
+						index = index <= -1 ? len - 1 : index;
+						left = left + num * setting.width;
+						ulfir.animate({
+							marginLeft: left
+						}, setting.speed, function () {
+							if(left >= len * setting.width){
+								var ulLast = $('ul', ulBox).eq(2).remove();
+								ulLast.css('margin-left', 0);
+								ulBox.prepend(ulLast);
+								ulfir.css('margin-left', 0);
+							}
+							flag = true
+						})
+					}
+					btnAni(index)
 				}
 			}
 			//定时器
-			timer = setInterval(ani, setting.during, 0, 1);
+			timer = setInterval(ani, setting.during, setting.direction, 1);
 			_this.hover(function () {
 				$('.prev', this).css('display', 'block');
 				$('.next', this).css('display', 'block');
-				// clearInterval(timer);
+				clearInterval(timer);
 			}, function () {
 				$('.prev', this).css('display', 'none');
 				$('.next', this).css('display', 'none');
-				timer = setInterval(ani, setting.during, 1, 1);
+				timer = setInterval(ani, setting.during, setting.direction, 1);
 			})
 			$('.next').click(function () {
-				flag && aniLeft();
+				flag && ani(1, 1);
 			})
 			$('.prev').click(function () {
-				flag && aniRight();
+				flag && ani(0, 1);
 			})
-
 		})
 	}
 })(jQuery)

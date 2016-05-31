@@ -6,6 +6,7 @@
 .slider{
 	position: relative;
 	overflow: hidden;
+	margin: 700px auto  auto  1200px;
 }
 .slider ul{
 	list-style: none;
@@ -18,6 +19,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	background-color: rgba(0, 0, 0, .3);
 }
 .slider .mask .sliderBtn{
 	position: absolute;

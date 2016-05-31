@@ -24,7 +24,15 @@
 	<script src="js/jquery-1.11.3.js"></script>
 	<script src="js/slider.js"></script>
 	<script>
-		$('.slider').slider();
+		$('.slider').slider({
+			width : 640,
+			height : 270,
+			during : 2000,
+			speed : 500,
+			btnSize : 20,  //底部遮罩层的按钮大小
+			btnSpace : 10, //底部的按钮间隙
+			direction : 1  //轮播方向默认为1，图片向左移动
+		});
 	</script>
 </body>
 </html>
