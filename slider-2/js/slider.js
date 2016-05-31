@@ -1,5 +1,5 @@
 (function ($) {
-	$.fn.slider = function (setting) {
+	$.fn.slider = function (setting) {  //给jQuery的实例对象绑定一个slider方法
 		var defaultSetting = {
 			width : 640,
 			height : 270,
@@ -9,12 +9,11 @@
 			btnSpace : 10,
 			direction : 1
 		}
-		setting = $.extend(true, {}, defaultSetting, setting);
-		return this.each(function (i, item) {
-			//重写setInterval函数，让其可以传参
-			var _setInterval = window.setInterval;
-			window.setInterval = function (callback, timer, param) {
-				var args = Array.prototype.slice.call(arguments,2); 
+		setting = $.extend(true, {}, defaultSetting, setting); //用传入的参数替换掉默认的设置  
+		return this.each(function (i, item) {   
+			var _setInterval = window.setInterval;  
+			window.setInterval = function (callback, timer, param) {  //重写setInterval函数，让其可以传参
+				var args = Array.prototype.slice.call(arguments, 2); 
 				var _fn = function () {
 					callback.apply(null, args);
 				}
@@ -28,10 +27,11 @@
 			img = $('img', li),
 			len = li.size(),
 			mask = $('.mask', this),
-			index = 0,
-			flag = true,
-			gap,
-			timer;
+			index = 0,    					//用来控制按钮的下标
+			flag = true,  					//标识动画是否执行完成
+			gap,          					//执行动画的按钮下标和当前按钮的下标的差
+			timer;							//计时器
+
 			_this.width(setting.width).height(setting.height);
 			ulBox.width(setting.width * 3 * len).height(setting.height).css({
 				marginLeft: -setting.width * len
@@ -39,6 +39,7 @@
 			ul.width(setting.width * len).height(setting.height);
 			img.width(setting.width).height(setting.height);
 			mask.height(setting.btnSize + 2 * setting.btnSpace);
+
 			//添加btn
 			for(var i = 0, str = ''; i < len; i++){
 				str += '<div class="sliderBtn"></div>';
@@ -82,7 +83,7 @@
 							marginLeft: left
 						}, setting.speed, function () {
 							if(left <= -len * setting.width){
-								ulfir = ulfir.remove();
+								ulfir = ulfir.remove();     
 								ulfir.css('margin-left', 0);
 								ulBox.append(ulfir);
 							}
