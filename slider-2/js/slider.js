@@ -34,7 +34,7 @@
 
 			_this.width(setting.width).height(setting.height);
 			ulBox.width(setting.width * 3 * len).height(setting.height).css({
-				marginLeft: -setting.width * len
+				marginLeft: -setting.width * len,
 			});
 			ul.width(setting.width * len).height(setting.height);
 			img.width(setting.width).height(setting.height);
@@ -47,7 +47,7 @@
 			mask.html(str);
 			var ulFir = ul.clone(true);
 			var ulSec = ul.clone(true);
-			var sliderBtn = $('.sliderBtn', '.mask');
+			var sliderBtn = $('.sliderBtn', this);
 			ulBox.append(ulFir);
 			ulBox.append(ulSec);
 			sliderBtn.each(function (i, item) {
@@ -65,8 +65,8 @@
 			btnAni(0);
 			//按钮样式变化
 			function btnAni (index) {
-				$('.sliderBtn').css('background', 'radial-gradient(white 20%, transparent 50%)');
-				$('.sliderBtn').eq(index).css('background', 'radial-gradient(white 10%, transparent 30%, white 70%)');
+				sliderBtn.css('background', 'radial-gradient(white 20%, transparent 50%)');
+				sliderBtn.eq(index).css('background', 'radial-gradient(white 10%, transparent 30%, white 70%)');
 			}
 			//动画
 			function ani (direction, num) {
