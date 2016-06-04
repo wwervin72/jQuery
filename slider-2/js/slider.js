@@ -65,8 +65,7 @@
 			btnAni(0);
 			//按钮样式变化
 			function btnAni (index) {
-				sliderBtn.css('background', 'radial-gradient(white 20%, transparent 50%)');
-				sliderBtn.eq(index).css('background', 'radial-gradient(white 10%, transparent 30%, white 70%)');
+				sliderBtn.eq(index).addClass('current').siblings().removeClass('current');
 			}
 			//动画
 			function ani (direction, num) {
@@ -111,12 +110,10 @@
 			//定时器
 			timer = setInterval(ani, setting.during, setting.direction, 1);
 			_this.hover(function () {
-				$('.prev', this).css('display', 'block');
-				$('.next', this).css('display', 'block');
+				$('.prev, .next', this).css('display', 'block');
 				clearInterval(timer);
 			}, function () {
-				$('.prev', this).css('display', 'none');
-				$('.next', this).css('display', 'none');
+				$('.prev, .next', this).css('display', 'none');
 				timer = setInterval(ani, setting.during, setting.direction, 1);
 			})
 			$('.next').click(function () {

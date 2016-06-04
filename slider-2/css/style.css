@@ -27,6 +27,9 @@
 	cursor: pointer;
 	background: radial-gradient(white 20%, transparent 50%);
 }
+.slider .mask .sliderBtn.current{
+	background: radial-gradient(white 10%, transparent 30%, white 70%);
+}
 .slider .prev, .slider .next{
 	position: absolute;
 	width: 45px; 
