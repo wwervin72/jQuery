@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>upLoadFile</title>
+</head>
+<body>
+	<input type="file" id="file"/>
+	<span id="img"></span>
+	<span id="img2"></span>
+	<script>
+		var ipt = document.getElementById('file');
+		var span = document.getElementById('img');
+		var span2 = document.getElementById('img2');
+		if(!window.FileReader){
+			ipt.setAttribute('disabled', true);
+		}else{
+			ipt.addEventListener('change', getFile, false);
+		}
+
+		function getFile (file) {
+			var file = this.files[0];
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+			    span.innerHTML = '<div class="sitetip">图片img标签展示：</div><img src="'+this.result+'" alt=""/>';
+			}
+
+			var fr = new FileReader();
+			fr.readAsDataURL(file);
+			fr.onload = function(e){
+				var img = document.createElement('img');
+				img.src = this.result;
+				document.getElementsByTagName('body')[0].appendChild(img);
+			}
+
+		}
+	</script>
+</body>
+</html>
