@@ -2,13 +2,50 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>upLoadFile</title>
+	<title>uploadFile</title>
+	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<input type="file" id="file"/>
-	<span id="img"></span>
-	<span id="img2"></span>
+	<div id="uploadfile" class="uploadfile">
+		<div class="selFile">
+			<div class="iptBox">
+				<img src="img/add_img.png" class="addImg">
+				<div class="file">
+					<input type="file" class="fileIpt"/>
+					<div class="fileBtn">点击选择文件</div>
+				</div>
+			</div>
+			<div class="dragBox">
+				或者将文件拖到此处
+			</div>
+		</div>
+		<div class="fileInfo">
+			<div class="info">
+				选择了<span class="fileCount">1</span>个文件，共有
+				<span class="fileSize">860.65</span>KB。</div>
+			<div class="goDo">
+				<input type="file" class="continueSelIpt"/>
+				<button class="continueSelBtn">继续选择</button>
+				<button class="beginUpload">开始上传</button>
+			</div>
+		</div>
+		<div class="fileDetailInfo">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+			<img src="img/file.png" alt="">
+		</div>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/uploadfile.js"></script>
 	<script>
+		$('#uploadfile').upLoadFile();
+	</script>
+<!-- 	<script>
 		var ipt = document.getElementById('file');
 		var span = document.getElementById('img');
 		var span2 = document.getElementById('img2');
@@ -35,6 +72,6 @@
 			}
 
 		}
-	</script>
+	</script> -->
 </body>
 </html>

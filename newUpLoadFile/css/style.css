@@ -1,0 +1,124 @@
+body{
+	font: 12px 'microsoft yahei';
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+.uploadfile{
+	width: 700px;
+	height: 300px;
+	margin: 50px auto;
+	border: 1px solid #ccc;
+	background-color: #fbfbfb;
+}
+.selFile{
+	width: 100%;
+	height: 80%;
+	padding: 2%;
+	border-bottom: 1px solid #ccc;
+}
+.selFile .iptBox, .selFile .dragBox{
+	position: relative;
+	width: 30%;
+	height: 100%;
+	float: left;
+	border: 1px dashed #ccc;
+	text-align: center;
+}
+.selFile .dragBox{
+	width: 68%;
+	float: right;
+	background-color: #fff;
+	text-align: center;
+	color: #ccc;
+}
+.selFile .iptBox .addImg{
+	width: 48.75%;
+	height: 42.25%;
+	margin-top: 10px;
+}
+.file{
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 10px;
+}
+.file .fileIpt, .file .fileBtn{
+	position: absolute;
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
+	border-radius: 3px;
+}
+.file .fileIpt{
+	left: 0;
+	opacity: 0;
+	z-index: 100;
+}
+.file .fileBtn{
+	background-color: #00b7ee;
+	color: #fff;
+	text-align: center;
+	font-size: 15px;
+	letter-spacing: 2px;
+}
+.fileInfo{
+	width: 100%;
+	height: 20%;
+	position: relative;
+}
+.fileInfo .info{
+	position: absolute;
+	width: 70%;
+	height: 100%;
+	left: 10px;
+	color: #999;
+	font-size: 14px;
+}
+.fileInfo .goDo{
+	position: absolute;
+	width: 30%;
+	height: 100%;
+	right: 10px;
+}
+.fileInfo .goDo .continueSelIpt,
+.fileInfo .goDo .continueSelBtn,
+.fileInfo .goDo .beginUpload{
+	position: absolute;
+	width: 40%;
+	height: 60%;
+	top: 50%;
+	border: 1px solid #00b7ee;
+	background-color: transparent;
+	border-radius: 3px;
+	color: #666;
+	font-weight: 550;
+}
+.fileInfo .goDo .continueSelIpt{
+	opacity: 0;
+	z-index: 100;
+}
+.fileInfo .goDo .continueSelIpt,
+.fileInfo .goDo .continueSelBtn{
+	left: 0;
+}
+.fileInfo .goDo .beginUpload{
+	right: 0;
+	background-color: #00b7ee;
+	color: #fff;
+	cursor: pointer;
+}
+.fileDetailInfo{
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+}
+.fileDetailInfo img{
+	width: 12.5%;
+	padding: 20px;
+	border: 1px dotted #ddd;
+}
