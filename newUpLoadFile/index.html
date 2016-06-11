@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div id="uploadfile" class="uploadfile">
-		<div class="selFile">
+		<!-- <div class="selFile">
 			<div class="iptBox">
 				<img src="img/add_img.png" class="addImg">
 				<div class="file">
@@ -25,8 +25,8 @@
 				<span class="fileSize">860.65</span>KB。</div>
 			<div class="goDo">
 				<input type="file" class="continueSelIpt"/>
-				<button class="continueSelBtn">继续选择</button>
-				<button class="beginUpload">开始上传</button>
+				<button class="continueSelBtn"><span>继续选择</span></button>
+				<button class="beginUpload"><span>开始上传</span></button>
 			</div>
 		</div>
 		<div class="fileDetailInfo">
@@ -38,12 +38,12 @@
 			<img src="img/file.png" alt="">
 			<img src="img/file.png" alt="">
 			<img src="img/file.png" alt="">
-		</div>
+		</div> -->
 	</div>
 	<script src="js/jquery-1.11.3.js"></script>
 	<script src="js/uploadfile.js"></script>
 	<script>
-		$('#uploadfile').upLoadFile();
+		$('#uploadfile').upLoadFile({width : 350});
 	</script>
 <!-- 	<script>
 		var ipt = document.getElementById('file');

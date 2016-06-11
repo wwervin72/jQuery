@@ -22,14 +22,14 @@ body{
 }
 .selFile .iptBox, .selFile .dragBox{
 	position: relative;
-	width: 30%;
+	width: 40%;
 	height: 100%;
 	float: left;
 	border: 1px dashed #ccc;
 	text-align: center;
 }
 .selFile .dragBox{
-	width: 68%;
+	width: 58%;
 	float: right;
 	background-color: #fff;
 	text-align: center;
@@ -59,10 +59,11 @@ body{
 	z-index: 100;
 }
 .file .fileBtn{
-	background-color: #00b7ee;
-	color: #fff;
+	background-color: transparent;
+	border: 1px solid #00b7ee;
+	color: #999;
 	text-align: center;
-	font-size: 15px;
+	font-size: 12px;
 	letter-spacing: 2px;
 }
 .fileInfo{
@@ -72,7 +73,7 @@ body{
 }
 .fileInfo .info{
 	position: absolute;
-	width: 70%;
+	width: 50%;
 	height: 100%;
 	left: 10px;
 	color: #999;
@@ -80,7 +81,7 @@ body{
 }
 .fileInfo .goDo{
 	position: absolute;
-	width: 30%;
+	width: 50%;
 	height: 100%;
 	right: 10px;
 }
@@ -94,8 +95,7 @@ body{
 	border: 1px solid #00b7ee;
 	background-color: transparent;
 	border-radius: 3px;
-	color: #666;
-	font-weight: 550;
+	color: #999;
 }
 .fileInfo .goDo .continueSelIpt{
 	opacity: 0;
@@ -107,8 +107,6 @@ body{
 }
 .fileInfo .goDo .beginUpload{
 	right: 0;
-	background-color: #00b7ee;
-	color: #fff;
 	cursor: pointer;
 }
 .fileDetailInfo{
@@ -116,9 +114,13 @@ body{
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-top: none;
+	font-size: 0;
+	display: none;
 }
 .fileDetailInfo img{
-	width: 12.5%;
-	padding: 20px;
+	width: 18%;
+	margin-top: 10px;
+	margin-right: 2.5%;
+	padding: 10px;
 	border: 1px dotted #ddd;
 }
