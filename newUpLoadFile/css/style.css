@@ -20,6 +20,9 @@ body{
 	padding: 2%;
 	border-bottom: 1px solid #ccc;
 }
+.selFile.smSelFile{
+	height: 60%;
+}
 .selFile .iptBox, .selFile .dragBox{
 	position: relative;
 	width: 40%;
@@ -36,21 +39,22 @@ body{
 	color: #ccc;
 }
 .selFile .iptBox .addImg{
-	width: 48.75%;
-	height: 42.25%;
-	margin-top: 10px;
+	width: 60%;
+}
+.selFile .iptBox .addImg.smAddImg{
+	width: 25%;
 }
 .file{
 	width: 100%;
-	height: 20%;
+	height: 30%;
 	position: absolute;
 	bottom: 10px;
 }
 .file .fileIpt, .file .fileBtn{
 	position: absolute;
-	width: 90%;
+	width: 80%;
 	height: 100%;
-	margin-left: 5%;
+	margin-left: 10%;
 	border-radius: 3px;
 }
 .file .fileIpt{
@@ -71,19 +75,32 @@ body{
 	height: 20%;
 	position: relative;
 }
+.fileInfo.smFileInfo{
+	height: 40%;
+}
 .fileInfo .info{
 	position: absolute;
-	width: 50%;
+	width: 60%;
 	height: 100%;
 	left: 10px;
 	color: #999;
 	font-size: 14px;
 }
+.fileInfo .info.smInfo{
+	width: 100%;
+	height: 50%;
+}
 .fileInfo .goDo{
 	position: absolute;
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	right: 10px;
+}
+.fileInfo .goDo.smGoDo{
+	width: 100%;
+	height: 50%;
+	top: 50%;
+	right: 0;
 }
 .fileInfo .goDo .continueSelIpt,
 .fileInfo .goDo .continueSelBtn,
@@ -100,10 +117,6 @@ body{
 .fileInfo .goDo .continueSelIpt{
 	opacity: 0;
 	z-index: 100;
-}
-.fileInfo .goDo .continueSelIpt,
-.fileInfo .goDo .continueSelBtn{
-	left: 0;
 }
 .fileInfo .goDo .beginUpload{
 	right: 0;

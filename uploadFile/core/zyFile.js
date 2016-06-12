@@ -53,7 +53,8 @@ var ZYFILE = {
 			self.lastUploadFile = this.uploadFile;
 			this.uploadFile = this.uploadFile.concat(this.filterFile(files));
 			var tmpFiles = [];
-			
+				
+				console.log(self.lastUploadFile)
 			// 因为jquery的inArray方法无法对object数组进行判断是否存在于，所以只能提取名称进行判断
 			var lArr = [];  // 之前文件的名称数组
 			var uArr = [];  // 现在文件的名称数组

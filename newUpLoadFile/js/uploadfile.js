@@ -1,11 +1,16 @@
 (function ($, undefined) {
 	$.fn.upLoadFile = function (setting) {
 		var defaultSetting = {
-			width : 350,
-			height : 200,
-			canDrag : true
+			width : 250,
+			height : 150,
+			canDrag : false,
+			canSelmultiple : true
 		};
 		defaultSetting = $.extend(true, {}, defaultSetting, setting);
+
+		//宽高最小值为220和200
+		defaultSetting.width < 220 && (defaultSetting.width = 220);
+		defaultSetting.height < 200 && (defaultSetting.height = 200);
 		$(this).each(function (i, item) {
 
 			//构造DOM节点
@@ -13,7 +18,7 @@
 				htmlStr +=				'<div class="iptBox">'; 
 				htmlStr +=					'<img src="img/add_img.png" class="addImg">'; 
 				htmlStr +=					'<div class="file">'; 
-				htmlStr +=						'<input type="file" class="fileIpt"/>'; 
+				htmlStr +=						'<input type="file" class="fileIpt" multiple/>'; 
 				htmlStr +=						'<div class="fileBtn">点击选择文件</div>'; 
 				htmlStr +=					'</div>';
 				htmlStr +=				'</div>'; 
@@ -38,34 +43,50 @@
 			var _this = $(item);
 			_this.html(htmlStr);
 			var selFile = $('.selFile', item),
-			dragBox = $('.dragBox', item),
-			iptBox = $('.iptBox', item),
-			fileBtn = $('.fileBtn', item),
+			iptBox = $('.iptBox', selFile),
+			addImg = $('.addImg', iptBox),
+			dragBox = $('.dragBox', selFile),
+			fileIpt = $('.fileIpt', iptBox),
+			fileBtn = $('.fileBtn', iptBox),
 			fileInfo = $('.fileInfo', item),
-			info = $('.info', item),
-			goDo = $('.goDo', item),
+			info = $('.info', fileInfo),
+			goDo = $('.goDo', fileInfo),
 			fileImg = $('.fileDetailInfo img', item),
 			fileInfoChild = $('.goDo', item).children();
 
+			//取消多选
+			defaultSetting.canSelmultiple || fileIpt.removeAttr('multiple');
+
 			//修改样式
-			_this.width(defaultSetting.width).height(defaultSetting.height);
+			_this.outerWidth(defaultSetting.width).outerHeight(defaultSetting.height);
+
 			//没有拖拽功能
-			defaultSetting.canDrag || (dragBox.hide() &&  iptBox.css({width : '100%'}));
+			defaultSetting.canDrag || (dragBox.hide() &&  iptBox.css({width : '100%'}) && addImg.addClass('smAddImg'));
+
+			//当宽度小于400的时候，fileinfo部分分为两行
 			if(defaultSetting.width < 400){
-				info.css({width : '100%'})
-				var godo = goDo.remove();
-				godo.css({top : '100%'})
-				fileInfo.append(godo);
+				selFile.addClass('smSelFile');
+				fileInfo.addClass('smFileInfo');
+				info.addClass('smInfo');
+				goDo.addClass('smGoDo');
+				setLineHeight([info, goDo])
 			}
+
+			addImg.height(addImg.width() * 65 /75);
+
 			//居中样式
 			setLineHeight([dragBox, fileBtn, fileInfo, goDo]);
+
 			//上传文件展示
 			fileImg.each(function (i, item) {
 				i !==0 && i % 4 ===0 && $(item).css('margin-right', 0);
 			})
+
 			//上传按钮居中
 			fileInfoChild.css('margin-top', -fileInfoChild.height() / 2 + 'px')
 
+			//给input标签绑定onchange事件
+			fileIpt.on('change', getFiles);
 
 			function setLineHeight (objArr) {
 				 objArr.forEach(function (item, i) {
@@ -73,6 +94,13 @@
 				 		lineHeight : $(item).height() + 'px'
 				 	})
 				 })
+			}
+			function getFiles (e) {
+				var e = e || window.event;
+				var files = e.target.files;
+				$(files).each(function (i, item) {
+
+				})
 			}
 		})
 	}
