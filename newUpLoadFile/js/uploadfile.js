@@ -3,13 +3,13 @@
 		var defaultSetting = {
 			width : 250,
 			height : 150,
-			canDrag : false,
+			canDrag : true,
 			canSelmultiple : true
 		};
 		defaultSetting = $.extend(true, {}, defaultSetting, setting);
 
 		//宽高最小值为220和200
-		defaultSetting.width < 220 && (defaultSetting.width = 220);
+		defaultSetting.width < 250 && (defaultSetting.width = 250);
 		defaultSetting.height < 200 && (defaultSetting.height = 200);
 		$(this).each(function (i, item) {
 
@@ -52,7 +52,8 @@
 			info = $('.info', fileInfo),
 			goDo = $('.goDo', fileInfo),
 			fileImg = $('.fileDetailInfo img', item),
-			fileInfoChild = $('.goDo', item).children();
+			fileInfoChild = $('.goDo', item).children(),
+			fileDetailInfo = $('.fileDetailInfo', item);
 
 			//取消多选
 			defaultSetting.canSelmultiple || fileIpt.removeAttr('multiple');
@@ -75,7 +76,7 @@
 			addImg.height(addImg.width() * 65 /75);
 
 			//居中样式
-			setLineHeight([dragBox, fileBtn, fileInfo, goDo]);
+			setLineHeight([dragBox, fileBtn, fileInfo, goDo, fileInfoChild]);
 
 			//上传文件展示
 			fileImg.each(function (i, item) {
@@ -96,10 +97,25 @@
 				 })
 			}
 			function getFiles (e) {
-				var e = e || window.event;
-				var files = e.target.files;
+				var files = this.files;
+				var fr = new FileReader();
+				fileDetailInfo.css('display') === 'none' && fileDetailInfo.show();
 				$(files).each(function (i, item) {
-
+					fr.readAsDataURL(item);
+					$(fr).on('load', function (e) {
+						//如果上传的是图片
+						var img = $('<img />');
+						if(e.target.type.indexOf("image") !== -1){
+							img.attr('src', this.result);
+						}else if(e.target.type.indexOf("rar") !== -1){
+							img.attr('src', '../img/rar.png');
+						}else if(e.target.type.indexOf("zip") !== -1){
+							img.attr('src', '../img/zip.png');
+						}else if(e.target.type.indexOf("text") !== -1){
+							img.attr('src', '../img/text.png');
+						}
+						fileDetailInfo.append(img)
+					})
 				})
 			}
 		})
