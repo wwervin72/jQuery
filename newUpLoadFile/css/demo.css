@@ -8,7 +8,7 @@ body{
 	outline: none;
 }
 #demo{
-	width: 700px;
+	width: 600px;
 	height: 250px;
 	margin: 100px auto;
 	border: 1px solid #aaa;
@@ -79,13 +79,99 @@ body{
 	top: 10%;
 	border-radius: 3px;
 }
+#demo .file_info_handle{
+	width: 100%;
+	height: 20%;
+	display: table;
+	position: relative;
+}
 #demo .file_info_handle .file_info{
-	float: left;
-	width: 60%;
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 2%;
+}
+#demo .file_info_handle .file_info input, 
+#demo .file_info_handle .file_info button{
+	position: absolute;
+	width: 20%;
+	height: 80%;
+	top: 10%; 
+	background-color: #fff;
+	border: 1px solid #00B7EE;
+	border-radius: 3px;
+}
+#demo .file_info_handle .file_info input,
+#demo .file_info_handle .file_info .continue_sel{
+	right: 30%;
+}
+#demo .file_info_handle .file_info input{
+	z-index: 100;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+#demo .file_info_handle .file_info .uploadfile{
+	right: 2%;
+}
+#demo .file_show{
+	width: 100%;
+	padding: 2%;
+	border: 1px solid #aaa;
+	border-top: none;
+}
+#demo .file_show .img_box,
+#demo.noDrag .file_show .sel_file_btn{
+	position: relative;
+	display: inline-block;
+	width: 86px;
+	height: 86px;
+	padding: 2%;
+	border: 1px dotted #aaa;
+	vertical-align: middle;
+	margin-right: 2%;
+	margin-top: 2%;
+}
+#demo .file_show .img_box .img_handle{
+	position: absolute;
+	width: 100%;
+	height: 0;
+	background-color: #000;
+	color: #fff;
+	top: 0;
+	left: 0;
+	transition: all .5s;
+	-moz-transition: all .5s; 
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+}
+#demo .file_show .img_box:hover .img_handle{
+	height: 20px;
+}
+
+
+
+/*没有拖拽功能时的样式*/
+#demo.noDrag{
+	width: 600px;
+	height: 60px;
+}
+#demo.noDrag .file_info_handle{
 	height: 100%;
 }
-#demo .file_info_handle .file_handle{
-	float: right;
-	width: 40%;
+#demo.noDrag .file_show .sel_file_btn input,
+#demo.noDrag .file_show .sel_file_btn .sel_btn{
+	position: absolute;
+	width: 100%;
 	height: 100%;
+	left: 0;
+	top: 0;
+}
+#demo.noDrag .file_show .sel_file_btn input{
+	z-index: 100;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+#demo.noDrag .file_show .sel_file_btn .sel_btn{
+	background: url('../img/add_img.png') center center no-repeat;
 }
