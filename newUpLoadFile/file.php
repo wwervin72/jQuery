@@ -5,8 +5,7 @@
 	$fileAlias = $_FILES["file"]["tmp_name"];
 
 	if($fileAlias){
-		move_uploaded_file($_FILES["file"]["tmp_name"],
-	    "uploadfile/" . $_FILES["file"]["name"]);
+		move_uploaded_file($fileAlias, "uploadfile/" . $fileName);
 	}
-	echo $fileName.'---'.$type.'---'.$size.'---'.$fileAlias;
+	echo $fileName . '---' . $type . '---' . $size.'---' . $fileAlias;
 ?>
