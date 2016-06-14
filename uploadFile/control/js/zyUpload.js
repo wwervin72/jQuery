@@ -175,6 +175,7 @@
 				}
 				
 				// 处理不同类型文件代表的图标
+				console.log(file.type)
 				var fileImgSrc = "control/images/fileType/";
 				if(file.type.indexOf("rar") > 0){
 					fileImgSrc = fileImgSrc + "rar.png";

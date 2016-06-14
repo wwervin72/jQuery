@@ -7,5 +7,5 @@
 	if($fileAlias){
 		move_uploaded_file($fileAlias, "uploadfile/" . $fileName);
 	}
-	echo $fileName . '---' . $type . '---' . $size.'---' . $fileAlias;
+	echo 'fileName: ' . $fileName . ', fileType: ' . $type . ', fileSize: ' . ($size / 1024) . 'KB';
 ?>

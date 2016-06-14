@@ -2,44 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>uploadFile</title>
-	<link rel="stylesheet" href="css/style.css"/>
+	<title>uploadfile</title>
+	<link rel="stylesheet" href="css/demo.css"/>
 </head>
 <body>
-	<div id="uploadfile" class="uploadfile">
+	<div class="up_load_file">
 	</div>
 	<script src="js/jquery-1.11.3.js"></script>
-	<script src="js/uploadfile.js"></script>
+	<script src="js/demo.js"></script>
 	<script>
-		$('#uploadfile').upLoadFile({width : 700});
+		$('.up_load_file').uploadfile({
+			width : 450,
+			success: function (fileName) {
+				alert(fileName + '上传成功');
+			},
+			complete : function () {
+				alert('上传完毕');
+			}
+		});
 	</script>
-<!-- 	<script>
-		var ipt = document.getElementById('file');
-		var span = document.getElementById('img');
-		var span2 = document.getElementById('img2');
-		if(!window.FileReader){
-			ipt.setAttribute('disabled', true);
-		}else{
-			ipt.addEventListener('change', getFile, false);
-		}
-
-		function getFile (file) {
-			var file = this.files[0];
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = function(e){
-			    span.innerHTML = '<div class="sitetip">图片img标签展示：</div><img src="'+this.result+'" alt=""/>';
-			}
-
-			var fr = new FileReader();
-			fr.readAsDataURL(file);
-			fr.onload = function(e){
-				var img = document.createElement('img');
-				img.src = this.result;
-				document.getElementsByTagName('body')[0].appendChild(img);
-			}
-
-		}
-	</script> -->
 </body>
 </html>
