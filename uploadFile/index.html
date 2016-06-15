@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>由html5实现的文件上传预览功能</title>
-<!-- 引用控制层插件样式 -->
-<link rel="stylesheet" href="control/css/zyUpload.css" type="text/css">
-<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
-<!-- 引用核心层插件 -->
-<script src="core/zyFile.js"></script>
-<!-- 引用控制层插件 -->
-<script src="control/js/zyUpload.js"></script>
-<!-- 引用初始化JS -->
-<script src="core/jq22.js"></script>
+	<meta charset="UTF-8">
+	<title>uploadfile</title>
+	<link rel="stylesheet" href="css/demo.css"/>
 </head>
 <body>
-<h1 style="text-align:center;">Html5 Upload示例</h1>
-<div id="demo" class="demo">
-</div>
+	<div class="up_load_file">
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/uploadfile.js"></script>
+	<script>
+		$('.up_load_file').uploadfile({
+			url : 'file.php',
+			width : 500,
+			height : 50,
+			canDrag : true,
+			canMultiple : true,
+			success: function (fileName) {
+				alert(fileName + '上传成功');
+			},
+			error: function (fileName) {
+				alert(fileName + '上传失败');
+			},
+			complete : function () {
+				alert('所有文件上传完毕');
+			}
+		});
+	</script>
 </body>
 </html>

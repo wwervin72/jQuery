@@ -1,0 +1,145 @@
+body{
+	font: 12px 'microsoft yahei';
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+.uploadfile{
+	width: 700px;
+	height: 300px;
+	margin: 50px auto;
+	border: 1px solid #ccc;
+	background-color: #fbfbfb;
+}
+.selFile{
+	width: 100%;
+	height: 80%;
+	padding: 2%;
+	border-bottom: 1px solid #ccc;
+}
+.selFile.smSelFile{
+	height: 60%;
+}
+.selFile .iptBox, .selFile .dragBox{
+	position: relative;
+	width: 40%;
+	height: 100%;
+	float: left;
+	border: 1px dashed #ccc;
+	text-align: center;
+}
+.selFile .dragBox{
+	width: 58%;
+	float: right;
+	background-color: #fff;
+	text-align: center;
+	color: #ccc;
+}
+.selFile .iptBox .addImg{
+	width: 30%;
+}
+.selFile .iptBox .addImg.smAddImg{
+	width: 25%;
+}
+.file{
+	width: 100%;
+	height: 30%;
+	position: absolute;
+	bottom: 10px;
+}
+.file .fileIpt, .file .fileBtn{
+	position: absolute;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	border-radius: 3px;
+}
+.file .fileIpt{
+	left: 0;
+	opacity: 0;
+	z-index: 100;
+}
+.file .fileBtn{
+	background-color: transparent;
+	border: 1px solid #00b7ee;
+	color: #999;
+	text-align: center;
+	font-size: 12px;
+	letter-spacing: 2px;
+}
+.fileInfo{
+	width: 100%;
+	height: 20%;
+	position: relative;
+}
+.fileInfo.smFileInfo{
+	height: 40%;
+}
+.fileInfo .info{
+	position: absolute;
+	width: 60%;
+	height: 100%;
+	padding-left: 10px;
+	color: #999;
+	font-size: 14px;
+}
+.fileInfo .info.smInfo{
+	width: 100%;
+	height: 50%;
+}
+.fileInfo .goDo{
+	position: absolute;
+	width: 40%;
+	height: 100%;
+	right: 10px;
+}
+.fileInfo .goDo.smGoDo{
+	width: 100%;
+	height: 50%; 
+	top: 50%;
+	right: 0;
+}
+.fileInfo .goDo.smGoDo input, .fileInfo .goDo.smGoDo .continueSelBtn{
+	left: 10px;
+}
+.fileInfo .goDo.smGoDo .beginUpload{
+	right: 10px;
+}
+.fileInfo .goDo .continueSelIpt,
+.fileInfo .goDo .continueSelBtn,
+.fileInfo .goDo .beginUpload{
+	position: absolute;
+	width: 40%;
+	height: 80%;
+	top: 50%;
+	border: 1px solid #00b7ee;
+	background-color: transparent;
+	border-radius: 3px;
+	color: #999;
+}
+.fileInfo .goDo .continueSelIpt{
+	opacity: 0;
+	z-index: 100;
+}
+.fileInfo .goDo .beginUpload{
+	right: 0;
+	cursor: pointer;
+}
+.fileDetailInfo{
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+	font-size: 0;
+	display: none;
+}
+.fileDetailInfo img{
+	width: 18%;
+	margin-top: 10px;
+	margin-right: 2.5%;
+	padding: 10px;
+	border: 1px dotted #ddd;
+}
