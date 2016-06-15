@@ -39,6 +39,7 @@ body{
 	margin: 100px auto;
 	border: 1px solid #aaa;
 	background-color: #eee;
+	display: none;
 }
 .up_load_file .file_sel{
 	width: 100%;
@@ -222,6 +223,9 @@ body{
 	left: 0;
 	top: 0;
 	cursor: pointer;
+}
+.up_load_file.noDrag .file_show .sel_file_btn input{
+	opacity: 0;
 }
 .up_load_file.noDrag .file_show .sel_file_btn .sel_btn{
 	background: url('../img/add_img.png') center center no-repeat;

@@ -72,7 +72,8 @@
 			}
 			$(item).css({
 				width : setting.width,
-				height : setting.height
+				height : setting.height,
+				display : 'block'
 			});
 			$(item).html(demoHtml);
 
