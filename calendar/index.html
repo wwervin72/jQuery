@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calendar</title>
+    <link rel="stylesheet" href="calendar.css"/>
+</head>
+<body>
+    <div class="calendar"></div>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="rollingSlide.js"></script>
+    <script src="calendar.js"></script>
+    <script>
+        $('.calendar').lwCalendar({
+            defaultDay: new Date(),
+            eventsRenderCb: function () {
+                $('.eventsUl > li').each(function (i, e) {
+                    e = $(e);
+                    if(e.width() < e.find('>span').width()){
+                        e.lwRolling({
+                            item: 'span',
+                            speed: 50,
+                            direction: 'left'
+                        });
+                    }
+                })
+            },
+            events: [
+                {
+                    date: '2017-02-16',
+                    content: 'aaaaaaa'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'bbbbbbbbbb'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'ccccccccccccccc'
+                },
+                {
+                    date: '2017-02-15',
+                    content: 'eeeeeeeeeeeeeeee'
+                },
+                {
+                    date: '2017-02-20',
+                    content: 'dddddddddddddddddd'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'fffffffffffffffffffff'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'ggggggggggggggggg'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'ttttttttttttttt'
+                },{
+                    date: '2017-02-16',
+                    content: 'mmmmmmmmmmmmmmmmmmmm'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'nnnnnnnnnnnnnnnnnnn'
+                },
+                {
+                    date: '2017-02-16',
+                    content: 'uuuuuuuuuuuuuu'
+                }
+            ]
+        });
+    </script>
+</body>
+</html>

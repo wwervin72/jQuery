@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>particle</title>
+    <style>
+		body, html, #particle{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+		}
+    </style>
+</head>
+<body>
+    <div id="particle" particle-set='{"backgroundColor": "#fff", "nodeColor": "#aaa", "lineColor": "#eee"}'></div>
+    <script src="particle.js"></script>
+    <script>
+        let particle = new Particle(document.querySelector('#particle'));
+    </script>
+</body>
+</html>

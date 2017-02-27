@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            width: 100px;
+            margin-left: 800px;
+        }
+        li{
+            width: 100px;
+        }
+        #sliding{
+            padding: 0;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+        }
+        #sliding li, #sliding li img{
+            width: 50px;
+            height: 50px;
+        }
+         #sliding li img{
+            width: 100%;
+         }
+    </style>
+</head>
+<body>
+    <ul id="rolling">
+        <li class="li">
+            <span>11111111111111111111111111</span>
+      
+        </li>
+    </ul>
+    <ul id="sliding">
+        <li><img src="img/date.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_0.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_1.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_2.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_3.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_4.png" alt=""/></li>
+        <li><img src="img/mapPark_icon_5.png" alt=""/></li>
+        <li><img src="img/map_park_icon_1.png" alt=""/></li>
+        <li><img src="img/map_park_icon_2.png" alt=""/></li>
+        <li><img src="img/map_park_icon_3.png" alt=""/></li>
+        <li><img src="img/map_park_icon_4.png" alt=""/></li>
+        <li><img src="img/map_park_icon_5.png" alt=""/></li>
+    </ul>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="rollingSlide.js"></script>
+    <script>
+        $('#rolling>li').lwRolling({
+            item: 'span',
+            speed: 50,
+            direction: 'left'
+        });
+        $('#sliding').lwSliding({
+            item: 'li',
+            space: 2000,
+            num: 5,
+            direction: 'left'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+table, table *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+}
+ul{
+    list-style: none;
+}
+.calendarTable thead th{
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+    overflow: hidden;
+}
+.calendarTable thead th{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.calendarTable thead th:last-child,
+.calendarTable tbody td:last-child{
+    border-right: 1px solid #ddd;
+}
+.calendarTable tbody td{
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    overflow: hidden;
+    color: #fff;
+}
+.eventsUl, .eventsUl > li{
+    width: 100%;
+}
+.eventsUl{
+    height: 100%;
+    position: relative;
+}
+.eventsUl > li{
+    height: calc(100% / 3);
+    position: absolute;
+}
+.eventsUl > li{
+    white-space: nowrap;
+}
+.eventsUl > li > span{
+    display: inline;
+    font-size: 14px;
+    margin-right: 20px;
+}
+.eventsUl > li:nth-child(even){
+    background-color: #1f1d1d;
+}
+.eventsUl > li:nth-child(odd){
+    background-color: #292929;
+}
